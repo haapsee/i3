@@ -1,0 +1,39 @@
+
+set $black 		#070707
+set $dark 		#121316
+set $charcoal 		#404340
+#set $primarydark 	#106513
+#set $primary 		#199f1d
+#set $primarylight 	#1fc725
+set $primarydark 	#1D267D
+set $primary 		#5C469C
+set $primarylight 	#D4ADFC
+set $urgent 		#772222
+set $gray 		#9a9fAC
+set $white 		#F6FEF6
+
+# | Class 			| border 	| background 	| text 		| indicator 	| child_border |
+client.focused 			$primarydark 	$primarydark 	$white 		$primarylight 	$primarydark
+client.focused_inactive 	$gray 		$gray 		$black 		$charcoal 	$charcoal
+client.unfocused 		$dark 		#charcoal 	$white 		$charcoal 	$dark
+client.urgent 			$charcoal 	#urgent 	$white 		$urgent 	$urgent
+client.placeholder 		$black 		#dark 		$white 		$black 		$night
+
+client.background $black
+
+bar {
+	colors {
+		focused_workspace  $primarylight $primarydark $white
+		active_workspace   $gray $dark $white
+		inactive_workspace $gray $dark $white
+		urgent_workspace   $charcoal $urgent $white
+		binding_mode       $charcoal $urgent $white
+	}
+	status_command	i3status -c .config/i3/i3-status
+	position	top
+	
+	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+	font pango:DejaVu Sans Mono 12
+}
+
+bindsym $mod+d exec dmenu_run -nb '$black' -sf '$primary' -sb '$primarylight' -nf '$primarylight'
